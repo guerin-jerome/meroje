@@ -1,4 +1,4 @@
-# /api/v1/user/register
+# /api/v1/account/register
 
 ## Description générale
 
@@ -48,9 +48,9 @@ Le but de cet endpoint est de permettre à l'utilisateur de se créer un compte 
 
 Lien vers le fichier de description de la base de données :
 
-- <a href="/server/documentation/database.md">Base de données</a>
+- <a href="/server/database/database.md">Base de données</a>
 
-La ressource sur laquelle cet endpoint agit est celle de la table `user`.
+La ressource sur laquelle cet endpoint agit est celle de la table `account`.
 
 ## Règles et mapping
 
@@ -58,7 +58,7 @@ La ressource sur laquelle cet endpoint agit est celle de la table `user`.
 
 Vérification sur la structure des données.
 
-Si les données ne sont pas conformes à la structure d'entrée (cf. <a href="#Entrée">Entrée</a>) alors une erreur 400 est renvoyée et le message d'erreur <a href="/server/documentation/error-messages.md">E01</a> est loggé.
+Si les données ne sont pas conformes à la structure d'entrée (cf. <a href="#Entrée">Entrée</a>) alors une erreur 400 est renvoyée et le message d'erreur <a href="/server/docs/error-messages.md">E01</a> est loggé.
 
 ### Récupération d'informations `parallel-call-01`
 
@@ -71,21 +71,21 @@ Si la requête sur l'email remonte une réponse alors :
 - L'attribut `isSuccessful` sera valorisé à `false`
 - L'attribut `reasons` ajoutera un `Reason(code="VD01email", message="Email already exists, please log in.")`
 
-Le message d'avertissement <a href="/server/documentation/error-messages.md">W01</a> est loggé.
+Le message d'avertissement <a href="/server/docs/error-messages.md">W01</a> est loggé.
 
 Si la requête sur le nom d'utilisateur remonte une réponse alors :
 
 - L'attribut `isSuccessful` sera valorisé à `false`
 - L'attribut `reasons` ajoutera un `Reason(code="VD01username", message="Username already exists, please log in.")`
 
-Le message d'avertissement <a href="/server/documentation/error-messages.md">W02</a> est loggé.
+Le message d'avertissement <a href="/server/docs/error-messages.md">W02</a> est loggé.
 
 Si la date de naissance équivaut à une personne mineure, alors :
 
 - L'attribut `isSuccessful` sera valorisé à `false`
 - L'attribut `reasons` ajoutera un `Reason(code="VD01bithdate", message="You're not an adult, you can't register.")`
 
-Le message d'avertissement <a href="/server/documentation/error-messages.md">W03</a> est loggé.
+Le message d'avertissement <a href="/server/docs/error-messages.md">W03</a> est loggé.
 
 À ce stade, si `isSuccessful` est valorisé à `false` alors le traitement s'arrête et renvoie la réponse tel quel, sinon le traitement continue.
 
@@ -97,7 +97,7 @@ Cryptage du mot de passe avec les trois paramètres suivant :
 - salt: `username` en entrée + `-{secretSalt}` contenu dans les secrets envs
 - plainTextPassword
 
-Si l'opération échoue alors une erreur 500 est renvoyée et le message d'erreur <a href="/server/documentation/error-messages.md">E02</a> est loggé.
+Si l'opération échoue alors une erreur 500 est renvoyée et le message d'erreur <a href="/server/docs/error-messages.md">E02</a> est loggé.
 
 Sinon le traitement continue.
 
@@ -109,25 +109,23 @@ Création d'un token et requête pour vérifier l'unicité, répéter jusqu'à l
 
 Tableau de construction de l'entité :
 
-| Attribut de l'entité | Valeur       | Source                                      |
-| -------------------- | ------------ | ------------------------------------------- |
-| username             | username     | En entrée de l'endpoint (1.)                |
-| email                | email        | 1.                                          |
-| firstname            | firstname    | 1.                                          |
-| name                 | name         | 1.                                          |
-| birthdate            | birthdate    | 1.                                          |
-| phone                | phone        | 1.                                          |
-| country              | country      | 1.                                          |
-| pass                 | hash         | Valeur de cryptage `password-encryption-01` |
-| token                | token        | Valeur de création `create-token-01`        |
-| created_at           | date du jour |                                             |
-| is_admin             | false        |                                             |
+| Attribut de l'entité | Valeur    | Source                                      |
+| -------------------- | --------- | ------------------------------------------- |
+| username             | username  | En entrée de l'endpoint (1.)                |
+| email                | email     | 1.                                          |
+| firstname            | firstname | 1.                                          |
+| name                 | name      | 1.                                          |
+| birthdate            | birthdate | 1.                                          |
+| phone                | phone     | 1.                                          |
+| country              | country   | 1.                                          |
+| pass                 | hash      | Valeur de cryptage `password-encryption-01` |
+| token                | token     | Valeur de création `create-token-01`        |
 
 ### Création de l'entité `create-entity-01`
 
 Création de l'entité en base de données.
 
-Si l'opération échoue alors une erreur 500 est renvoyée et le message d'erreur <a href="/server/documentation/error-messages.md">E03</a> est loggé.
+Si l'opération échoue alors une erreur 500 est renvoyée et le message d'erreur <a href="/server/docs/error-messages.md">E03</a> est loggé.
 
 Sinon le traitement continue.
 

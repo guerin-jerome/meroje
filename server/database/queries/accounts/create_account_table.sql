@@ -1,0 +1,15 @@
+CREATE TABLE account (
+	id SERIAL PRIMARY KEY,
+  username VARCHAR(32) UNIQUE NOT NULL,
+  email VARCHAR(320) UNIQUE NOT NULL,
+  firstname VARCHAR(32) NOT NULL,
+  name VARCHAR(32) NOT NULL,
+  pass VARCHAR(200) NOT NULL,
+  birthdate DATE NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+  is_admin BOOLEAN NOT NULL DEFAULT false,
+  phone VARCHAR(20),
+  country VARCHAR(150),
+  token VARCHAR(200),
+  modified_at TIMESTAMP
+);
