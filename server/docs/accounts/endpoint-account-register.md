@@ -38,8 +38,14 @@ Le but de cet endpoint est de permettre à l'utilisateur de se créer un compte 
 {
   "isSuccessful": false,
   "reason": [
-    "Username already exists.",
-    "You're not an adult, you can't register."
+    {
+      "code": "VD01username",
+      "message": "Username already exists, please log in."
+    },
+    {
+      "code": "VD01bithdate",
+      "message": "You're not an adult, you can't register."
+    }
   ]
 }
 ```
