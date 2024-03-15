@@ -22,7 +22,6 @@ Le but de cet endpoint est de permettre à l'utilisateur de se créer un compte 
 | Nom          | Type          | Requis |
 | ------------ | ------------- | ------ |
 | isSuccessful | boolean       | x      |
-| token        | string        |        |
 | reasons      | array(Reason) |        |
 
 **Reason :**
@@ -37,7 +36,7 @@ Le but de cet endpoint est de permettre à l'utilisateur de se créer un compte 
 ```json
 {
   "isSuccessful": false,
-  "reason": [
+  "reasons": [
     {
       "code": "VD01username",
       "message": "Username already exists, please log in."
@@ -54,9 +53,9 @@ Le but de cet endpoint est de permettre à l'utilisateur de se créer un compte 
 
 Lien vers le fichier de description de la base de données :
 
-- <a href="/server/database/database.md">Base de données</a>
+- <a href="/server/docs/database/database.md">Base de données</a>
 
-La ressource sur laquelle cet endpoint agit est celle de la table `account`.
+Les ressources sur lesquelles cet endpoint agit sont celles de la table `accounts` et `sessions`.
 
 ## Règles et mapping
 
@@ -64,7 +63,17 @@ La ressource sur laquelle cet endpoint agit est celle de la table `account`.
 
 Vérification sur la structure des données.
 
-Si les données ne sont pas conformes à la structure d'entrée (cf. <a href="#Entrée">Entrée</a>) alors une erreur 400 est renvoyée et le message d'erreur <a href="/server/docs/error-messages.md">E01</a> est loggé.
+Une erreur 400 est renvoyée et le message d'erreur <a href="/server/docs/error-messages.md">E01</a> est loggé si :
+
+- les données ne sont pas conformes à la structure d'entrée (champs requis)
+- la longueur des chaînes d'`username`, `firstname` et `name` font plus de 32 caractères
+- la longueur de chaîne de l'`email` fait plus de 320 caractères
+- la longueur de chaîne de `pass` fait plus de 200 caractères
+- la longueur de chaîne de `phone` fait plus de 20 caractères
+- la longueur de chaîne de `country` fait plus de 150 caractères
+- l'attribut `birthdate` n'est pas convertible en date
+
+Sinon le traitement continue.
 
 ### Récupération d'informations `parallel-call-01`
 
@@ -107,13 +116,9 @@ Si l'opération échoue alors une erreur 500 est renvoyée et le message d'erreu
 
 Sinon le traitement continue.
 
-### Création du token `create-token-01`
+### Construction du compte `build-entity-01`
 
-Création d'un token et requête pour vérifier l'unicité, répéter jusqu'à l'unicité.
-
-### Construction de l'entité `build-entity-01`
-
-Tableau de construction de l'entité :
+Tableau de construction du compte utilisateur :
 
 | Attribut de l'entité | Valeur    | Source                                      |
 | -------------------- | --------- | ------------------------------------------- |
@@ -125,24 +130,39 @@ Tableau de construction de l'entité :
 | phone                | phone     | 1.                                          |
 | country              | country   | 1.                                          |
 | pass                 | hash      | Valeur de cryptage `password-encryption-01` |
-| token                | token     | Valeur de création `create-token-01`        |
 
-### Création de l'entité `create-entity-01`
+### Création du compte `create-entity-01`
 
-Création de l'entité en base de données.
+Création du compte en base de données.
 
 Si l'opération échoue alors une erreur 500 est renvoyée et le message d'erreur <a href="/server/docs/error-messages.md">E03</a> est loggé.
 
 Sinon le traitement continue.
 
+### Construction d'une session `build-entity-02`
+
+Génération d'un token et requête pour récupérer l'`id` de l'`account` créé à l'étape `create-entity-01`.
+
+| Attribut de l'entité | Valeur | Source                         |
+| -------------------- | ------ | ------------------------------ |
+| account_id           | email  | `id` de `create-entity-01`     |
+| token                | token  | Token généré `build-entity-02` |
+
+### Création de la session `create-entity-02`
+
+Création d'une session en base de données.
+
+Si l'opération échoue alors une erreur 500 est renvoyée et le message d'erreur <a href="/server/docs/error-messages.md">E04</a> est loggé.
+
+Sinon le traitement continue.
+
 ### Retour de l'endpoint avec succès `success-response-01`
 
-Renvoyer la réponse suivante :
+Mettre le token créé lors de `build-entity-02` en cookie de réponse et renvoyer le JSON suivant :
 
 ```json
 {
-  "isSuccessful": true,
-  "token": "7WK5T79u5mIzjIXXi2oI9Fglmgivv7RAJ7izyj9tUyQ" // Token créé auparavant
+  "isSuccessful": true
 }
 ```
 

@@ -2,7 +2,7 @@
 
 ## Schéma de la base de données
 
-## Table "account"
+## Table "accounts"
 
 | colonne     | type         | contrainte(s)             |
 | ----------- | ------------ | ------------------------- |
@@ -17,10 +17,17 @@
 | is_admin    | boolean      | not null, default = false |
 | phone       | varchar(20)  |                           |
 | country     | varchar(150) |                           |
-| token       | varchar(200) |                           |
 | modified_at | timestamp    |                           |
 
-## Table "budget"
+## Table "sessions"
+
+| colonne    | type        | contrainte(s) |
+| ---------- | ----------- | ------------- |
+| id         | serial      | PK            |
+| account_id | integer     | FK            |
+| token      | varchar(36) |               |
+
+## Table "budgets"
 
 | colonne       | type        | contrainte(s)   |
 | ------------- | ----------- | --------------- |
@@ -36,7 +43,7 @@
 | current       | float       |                 |
 | modified_at   | timestamp   |                 |
 
-## Table "transaction"
+## Table "transactions"
 
 | colonne     | type         | contrainte(s) |
 | ----------- | ------------ | ------------- |

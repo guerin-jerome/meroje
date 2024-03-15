@@ -1,4 +1,4 @@
-CREATE TABLE account (
+CREATE TABLE accounts (
 	id SERIAL PRIMARY KEY,
   username VARCHAR(32) UNIQUE NOT NULL,
   email VARCHAR(320) UNIQUE NOT NULL,
@@ -10,6 +10,5 @@ CREATE TABLE account (
   is_admin BOOLEAN NOT NULL DEFAULT false,
   phone VARCHAR(20),
   country VARCHAR(150),
-  token VARCHAR(200),
   modified_at TIMESTAMP
 );

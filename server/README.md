@@ -29,6 +29,6 @@ Document de base :
 
 Lien vers la description de la base de données et de ces tables inhérantes :
 
-- <a href="/server/database/database.md">Fichier de description</a>
+- <a href="/server/docs/database/database.md">Fichier de description</a>
 
 ## 👨🏻‍💻 Développement
