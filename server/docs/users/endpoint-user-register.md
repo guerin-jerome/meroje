@@ -1,4 +1,4 @@
-# /api/v1/account/register
+# /api/v1/user/register
 
 ## Description générale
 
@@ -55,7 +55,7 @@ Lien vers le fichier de description de la base de données :
 
 - <a href="/server/docs/database/database.md">Base de données</a>
 
-Les ressources sur lesquelles cet endpoint agit sont celles de la table `accounts` et `sessions`.
+Les ressources sur lesquelles cet endpoint agit sont celles de la table `users` et `sessions`.
 
 ## Règles et mapping
 
@@ -145,7 +145,7 @@ Tableau de construction d'une session :
 
 | Attribut de l'entité | Valeur | Source                     |
 | -------------------- | ------ | -------------------------- |
-| account_id           | email  | `id` de `create-entity-01` |
+| user_id              | email  | `id` de `create-entity-01` |
 
 ### Création de la session `create-entity-02`
 

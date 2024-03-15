@@ -1,2 +1,2 @@
-INSERT INTO sessions(account_id)
+INSERT INTO sessions(user_id)
 VALUES (1);

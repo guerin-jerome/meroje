@@ -2,7 +2,7 @@
 
 ## Schéma de la base de données
 
-## Table "accounts"
+## Table "users"
 
 | colonne     | type         | contrainte(s)             |
 | ----------- | ------------ | ------------------------- |
@@ -21,18 +21,18 @@
 
 ## Table "sessions"
 
-| colonne    | type        | contrainte(s)    |
-| ---------- | ----------- | ---------------- |
-| id         | serial      | PK               |
-| account_id | integer     | FK               |
-| token      | varchar(36) | required, unique |
+| colonne | type        | contrainte(s)    |
+| ------- | ----------- | ---------------- |
+| id      | serial      | PK               |
+| user_id | integer     | FK               |
+| token   | varchar(36) | required, unique |
 
 ## Table "budgets"
 
 | colonne       | type        | contrainte(s)   |
 | ------------- | ----------- | --------------- |
 | id            | integer     | PK              |
-| account_id    | integer     | FK              |
+| user_id       | integer     | FK              |
 | name          | varchar(32) | not null        |
 | value         | float       | not null        |
 | created_at    | timestamp   | not null        |
@@ -49,7 +49,7 @@
 | ----------- | ------------ | ------------- |
 | id          | integer      | PK            |
 | budget_id   | integer      | FK            |
-| account_id  | integer      | FK            |
+| user_id     | integer      | FK            |
 | amount      | float        | not null      |
 | date        | date         | not null      |
 | description | varchar(200) |               |
