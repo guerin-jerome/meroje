@@ -133,7 +133,7 @@ Tableau de construction du compte utilisateur :
 
 ### Création du compte `create-entity-01`
 
-Création du compte en base de données.
+Création du compte en base de données en retournant l'id unique du compte.
 
 Si l'opération échoue alors une erreur 500 est renvoyée et le message d'erreur <a href="/server/docs/error-messages.md">E03</a> est loggé.
 
@@ -141,12 +141,11 @@ Sinon le traitement continue.
 
 ### Construction d'une session `build-entity-02`
 
-Génération d'un token et requête pour récupérer l'`id` de l'`account` créé à l'étape `create-entity-01`.
+Tableau de construction d'une session :
 
-| Attribut de l'entité | Valeur | Source                         |
-| -------------------- | ------ | ------------------------------ |
-| account_id           | email  | `id` de `create-entity-01`     |
-| token                | token  | Token généré `build-entity-02` |
+| Attribut de l'entité | Valeur | Source                     |
+| -------------------- | ------ | -------------------------- |
+| account_id           | email  | `id` de `create-entity-01` |
 
 ### Création de la session `create-entity-02`
 

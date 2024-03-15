@@ -21,11 +21,11 @@
 
 ## Table "sessions"
 
-| colonne    | type        | contrainte(s) |
-| ---------- | ----------- | ------------- |
-| id         | serial      | PK            |
-| account_id | integer     | FK            |
-| token      | varchar(36) |               |
+| colonne    | type        | contrainte(s)    |
+| ---------- | ----------- | ---------------- |
+| id         | serial      | PK               |
+| account_id | integer     | FK               |
+| token      | varchar(36) | required, unique |
 
 ## Table "budgets"
 
