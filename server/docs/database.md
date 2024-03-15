@@ -2,6 +2,24 @@
 
 ## Schéma de la base de données
 
+## Table "user"
+
+| colonne     | type    | contrainte(s)    |
+| ----------- | ------- | ---------------- |
+| id          | integer | unique, PK       |
+| username    | string  | unique, required |
+| email       | string  | unique, required |
+| firstname   | string  | required         |
+| name        | string  | required         |
+| pass        | string  | required         |
+| birthdate   | date    | required         |
+| created_at  | date    | required         |
+| is_admin    | boolean | default = false  |
+| phone       | string  |                  |
+| country     | string  |                  |
+| token       | string  |                  |
+| modified_at | date    |                  |
+
 ## Table "budget"
 
 | colonne       | type    | contrainte(s)   |
@@ -29,20 +47,3 @@
 | date        | date    | required      |
 | description | string  |               |
 | modified_at | date    |               |
-
-## Table "user"
-
-| colonne     | type    | contrainte(s)    |
-| ----------- | ------- | ---------------- |
-| id          | integer | unique, PK       |
-| username    | string  | unique, required |
-| email       | string  | unique, required |
-| firstname   | string  | required         |
-| name        | string  | required         |
-| pass        | string  | required         |
-| hash        | string  | required         |
-| created_at  | date    | required         |
-| is_admin    | boolean | default = false  |
-| phone       | string  |                  |
-| country     | string  |                  |
-| modified_at | date    |                  |
