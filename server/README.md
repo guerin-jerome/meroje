@@ -11,8 +11,8 @@
 | <a href="/server/documentation/budgets/endpoint-budgets-reset.md">/api/v1/budgets/{budgetId}/reset</a>                   | PATCH  | Remise à zéro d'un budget                      |
 | <a href="/server/documentation/transactions/endpoint-transactions-user-history.md">/api/v1/transactions/{userId}</a>     | GET    | Récupération des transactions d'un utilisateur |
 | <a href="/server/documentation/transactions/endpoint-transactions-budget-history.md">/api/v1/transactions/{budgetId}</a> | GET    | Récupération des transactions d'un budget      |
-| <a href="/server/documentation/users/endpoint-users-register.md">/api/v1/users/register</a>                              | POST   | Inscription d'un utilisateur                   |
-| <a href="/server/documentation/users/endpoint-users-login.md">/api/v1/users/login</a>                                    | POST   | Connexion d'un utilisateur                     |
+| <a href="/server/documentation/users/endpoint-user-register.md">/api/v1/user/register</a>                                | POST   | Inscription d'un utilisateur                   |
+| <a href="/server/documentation/users/endpoint-user-login.md">/api/v1/user/login</a>                                      | POST   | Connexion d'un utilisateur                     |
 | <a href="/server/documentation/users/endpoint-users-logout.md">/api/v1/users/{userId}</a>                                | DELETE | Déconnexion d'un utilisateur                   |
 | <a href="/server/documentation/users/endpoint-users-edit.md">/api/v1/users/{userId}</a>                                  | PATCH  | Mise à jour des données utilisateur            |
 | <a href="/server/documentation/users/endpoint-users-change-password.md">/api/v1/users/{userId}/change-password</a>       | PATCH  | Changer le mot de passe de l'utilisateur       |
