@@ -4,6 +4,10 @@
 
 Le but de cet endpoint est de permettre à l'utilisateur de se créer un compte et de s'authentifier pour accéder à l'application.
 
+### Diagramme de séquence
+
+<img src="/server/docs/ressources/endpoint-user-register-diagram.png" />
+
 ## Entrée
 
 | Nom       | Type   | Requis |
