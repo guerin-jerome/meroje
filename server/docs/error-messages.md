@@ -4,7 +4,7 @@
 
 | Code message | Message                                                                                                                     |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------- |
-| E01          | E01 - /api/v1/user/register, erreur données d'entrée invalides lors de l'inscription.                                       |
+| E01          | E01 - /api/v1/user/register, erreur données d'entrées invalides lors de l'inscription.                                      |
 | E02          | E02 - /api/v1/user/register, l'encryptage du mot de passe a échoué pour l'utilisateur: {} avec l'email.                     |
 | E03          | E03 - /api/v1/user/register, la création du compte en base de données à échoué pour l'utilisateur: {} avec l'email: {}.     |
 | E04          | E04 - /api/v1/user/register, la création de la session en base de données à échoué pour l'utilisateur: {} avec l'email: {}. |

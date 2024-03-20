@@ -1,0 +1,24 @@
+meta {
+  name: Users - register
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3333/api/v1/user/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username": "merojegrn",
+    "email": "guerin_jerome@icloud.com",
+    "firstname": "Jérôme",
+    "name": "GUERIN",
+    "pass": "dsqjsqjhHJS",
+    "birthdate": "1999-01-18",
+    "phone": "0606060606",
+    "country": "France"
+  }
+}

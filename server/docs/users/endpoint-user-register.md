@@ -1,4 +1,4 @@
-# /api/v1/user/register
+# POST /api/v1/user/register
 
 ## Description générale
 
