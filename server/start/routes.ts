@@ -8,6 +8,6 @@
 */
 import router from '@adonisjs/core/services/router'
 
-const UsersController = () => import('#controllers/users_controller')
+const AuthenticationController = () => import('#controllers/authentication_controller')
 
-router.post('/api/v1/user/register', [UsersController, 'register'])
+router.post('/api/v1/user/register', [AuthenticationController, 'register'])

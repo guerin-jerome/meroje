@@ -6,11 +6,11 @@ import type { HttpContext } from '@adonisjs/core/http'
 import logger from '@adonisjs/core/services/logger'
 import { errors as vineErrors } from '@vinejs/vine'
 import AuthenticationControllerPort from './ports/authentication_controller.port.js'
-import type AuthenticationServicePort from '#services/ports/authentication_service.port'
+import AuthenticationService from '#services/authentication_service'
 
 @inject()
 export default class AuthenticationController implements AuthenticationControllerPort {
-  constructor(protected authenticationService: AuthenticationServicePort) {}
+  constructor(protected authenticationService: AuthenticationService) {}
 
   async register(context: HttpContext) {
     const { request, response } = context
