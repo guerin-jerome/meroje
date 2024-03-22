@@ -1,5 +1,5 @@
-export const httpStatusCode = {
-  success: 200,
-  badRequest: 400,
-  internalServerError: 500,
+export const httpStatus = {
+  SUCCESS: 200,
+  BAD_REQUEST: 400,
+  INTERNAL_SERVER_ERROR: 500,
 }

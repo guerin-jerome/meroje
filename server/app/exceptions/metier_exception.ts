@@ -1,10 +1,18 @@
 import { Exception } from '@adonisjs/core/exceptions'
+import logger from '@adonisjs/core/services/logger'
+
+export interface MetierExceptionProps {
+  code: string
+  message: string
+  httpStatus: number
+  log: string
+  isWarning?: boolean
+}
 
 export default class MetierException implements Exception {
   name: string
   message: string
   status: number
-  payload?: object
   stack?: string | undefined
   cause?: unknown
   help?: string | undefined
@@ -18,10 +26,14 @@ export default class MetierException implements Exception {
     return this.message
   }
 
-  constructor(name: string, message: string, status: number, payload?: object) {
-    this.name = name
+  constructor({ code, message, httpStatus, log, isWarning }: MetierExceptionProps) {
+    if (isWarning) {
+      logger.warn(log)
+    } else {
+      logger.error(log)
+    }
+    this.name = code
     this.message = message
-    this.status = status
-    this.payload = payload
+    this.status = httpStatus
   }
 }

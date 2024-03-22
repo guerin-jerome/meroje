@@ -3,7 +3,7 @@ interface Reason {
   message: string
 }
 
-export interface AuthenticationRegisterReturn {
+export interface AuthenticationRegisterResponse {
   isSuccessful: boolean
   reasons?: Array<Reason>
 }

@@ -1,6 +1,6 @@
-import { AuthenticationRegisterReturn } from '#controllers/types/authentication.types'
+import { AuthenticationRegisterResponse } from '#controllers/types/authentication.types'
 import { HttpContext } from '@adonisjs/core/http'
 
 export default interface AuthenticationControllerPort {
-  register(context: HttpContext): Promise<void | AuthenticationRegisterReturn>
+  register(context: HttpContext): Promise<void | AuthenticationRegisterResponse>
 }

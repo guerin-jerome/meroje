@@ -19,11 +19,14 @@ export default class AuthenticationService implements AuthenticationServicePort 
         // Règle : parallel-call-01
         .requestUserByEmailOrUsername(request)
         // Règle : valid-data-01
-        .then((users: Array<User>) => this.usersService.validRegisterUserData(request, users))
-        .then(() => ({ isSuccessful: true }))
+        .then((users: Array<User>) => this.usersService.validateRegisterUserData(request, users))
+        .then(() => ({ isSuccessful: true, token: 'example' }))
         .catch((exception) => {
           if (exception instanceof MetierException) {
-            return { isSuccessful: false, justification: exception.message }
+            return {
+              isSuccessful: false,
+              reasons: [{ code: exception.name, message: exception.message }],
+            }
           }
           throw exception
         })

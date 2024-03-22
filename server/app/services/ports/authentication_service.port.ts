@@ -1,5 +1,5 @@
-import { UserRegisterForm, UserRegisterResponse } from '#services/types/authentication.types'
+import { UserRegisterForm, UserRegisterReturn } from '#services/types/authentication.types'
 
 export default interface AuthenticationServicePort {
-  register(request: UserRegisterForm): Promise<UserRegisterResponse>
+  register(request: UserRegisterForm): Promise<UserRegisterReturn>
 }

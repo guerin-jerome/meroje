@@ -14,7 +14,8 @@ interface Reason {
   message: string
 }
 
-export interface UserRegisterResponse {
+export interface UserRegisterReturn {
   isSuccessful: boolean
   reasons?: Array<Reason>
+  token?: string
 }
