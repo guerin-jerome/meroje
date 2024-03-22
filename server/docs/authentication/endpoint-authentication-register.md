@@ -1,4 +1,4 @@
-# POST /api/v1/user/register
+# POST /api/v1/authentication/register
 
 ## Description générale
 
@@ -6,7 +6,7 @@ Le but de cet endpoint est de permettre à l'utilisateur de se créer un compte 
 
 ### Diagramme de séquence
 
-<img src="/server/docs/ressources/endpoint-user-register-diagram.png" />
+<img src="/server/docs/ressources/endpoint-authentication-register-diagram.png" />
 
 ## Entrée
 

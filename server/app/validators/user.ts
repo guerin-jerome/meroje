@@ -1,5 +1,6 @@
 import vine from '@vinejs/vine'
 
+// Règle : check-data-01
 export const registerUserValidator = vine.compile(
   vine.object({
     username: vine.string().maxLength(32),
